@@ -1,0 +1,15 @@
+<%- include ('../includes/header') %> 
+<div class="inscription">
+    <div class="titre_formulaire">Ajouter des images en slade</div>
+    <form action="/admin/ajouter_image_en_slade" method="post" enctype="multipart/form-data">
+        <div class="info_generale">
+            <div>
+                <label for="ajouter_photo">Ajouter une photo</label>
+                <input id="ajouter_photo" type="file" accept=".jpg, .jpeg, .png" name="photo_evenement">
+            </div>
+            <button>Envoyer</button>
+        </div>
+    </form>
+</div>
+
+<%- include ('../includes/footer') %> 

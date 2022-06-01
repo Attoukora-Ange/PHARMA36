@@ -6,6 +6,7 @@ const DATA_BASE_TRESORERIE = require("../../Models/cotisation");
 const BASE_CHOIX_TAILLE = require("../../Models/choix_taille");
 const BASE_AJOUT_INFO = require("../../Models/ajouter_info");
 const BASE_EVENEMENT = require("../../Models/ajouter_eve");
+const IMAGE_SLIDE = require('../../Models/image_en_slade');
 const bcrypt = require("bcrypt");
 const cloudinary = require('../../helper/uploadImage')
 // ************GET*********************
@@ -15,13 +16,15 @@ module.exports.getAccueil = async (req, res) => {
   const INFO = await BASE_AJOUT_INFO.findOne();
   const TOUS_EVENEMENTS_PROMOTIONS = await BASE_EVENEMENT.find();
   const MEMMBRES_BUREAUX = await BASE_MEMBRE_BUREAU.find();
-
+  const IMAGE_SLIDES = await IMAGE_SLIDE.find();
   const indexOption = {
     titre_page: "Accueil",
     INFO,
     UTILISATEUR_CONNECTE,
     TOUS_EVENEMENTS_PROMOTIONS,
     MEMMBRES_BUREAUX,
+    IMAGE_SLIDES,
+
   };
   res.render("index", indexOption);
 };
@@ -85,6 +88,18 @@ module.exports.getContact_detail = async (req, res) => {
     CONTACT_DETAIL,
   };
   res.render("utilisateurs/contact_detail", indexOption);
+};
+module.exports.getVoir_image_en_slade = async (req, res) => {
+  const { id } = req.params;
+  const UTILISATEUR_CONNECTE = req.user;
+
+  const IMAGE_SLIDES = await IMAGE_SLIDE.find();
+  const indexOption = {
+    titre_page: "Image slide",
+    UTILISATEUR_CONNECTE,
+    IMAGE_SLIDES,
+  };
+  res.render("utilisateurs/image_slide", indexOption);
 };
 module.exports.getEvenement = (req, res) => {
   const UTILISATEUR_CONNECTE = req.user;

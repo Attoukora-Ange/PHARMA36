@@ -23,6 +23,7 @@ ROUTE.get('/utilisateur/modifier_soutenance', ExterneFonction.loggedIn, controll
 ROUTE.get('/contact/contact_detail/:id', ExterneFonction.loggedIn, controllerUtilisateurs.getContact_detail);
 ROUTE.get('/evenement', ExterneFonction.loggedIn, controllerUtilisateurs.getEvenement);
 ROUTE.get('/contact', ExterneFonction.loggedIn, controllerUtilisateurs.getContact);
+ROUTE.get('/utilisateur/voir_image_en_slade', ExterneFonction.loggedIn, controllerUtilisateurs.getVoir_image_en_slade);
 ROUTE.get('/cotisation', ExterneFonction.loggedIn, controllerUtilisateurs.getCotisation);
 ROUTE.get('/historique_payement', ExterneFonction.loggedIn, controllerUtilisateurs.getHistorique_payement);
 

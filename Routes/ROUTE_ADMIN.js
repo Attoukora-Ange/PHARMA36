@@ -7,20 +7,11 @@ const ROUTE = express.Router();
 
 // ************************************************
 const fileStorageEgine = multer.diskStorage({})
-const upload = multer({storage: fileStorageEgine})
-// const fileStorageEgine = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         cb(null, 'Public/images/mes_images');
-//     },
-//     filename:(req, file, cb) => {
-//              const uniqueSuffix = file.fieldname + '_' + Date.now() + '_' + Math.round(Math.random() * 1E9)
-//             cb(null, uniqueSuffix +'_' + file.originalname.split(' ').join('_'));
-//     },
-// })
-// const upload = multer({storage: fileStorageEgine})
+const upload = multer({storage: fileStorageEgine});
 
 // *************GET****************
 ROUTE.get('/ajouter_eve', ExterneFonction.loggedIn, controllerAdmin.getAjouter_eve);
+ROUTE.get('/ajouter_image_en_slade', ExterneFonction.loggedIn, controllerAdmin.getAjouter_image_en_slade);
 ROUTE.get('/ajouter_info', ExterneFonction.loggedIn, controllerAdmin.getAjouter_info);
 ROUTE.get('/ajouter_bureau', ExterneFonction.loggedIn, controllerAdmin.getAjouter_bureau);
 ROUTE.get('/modifier_eve/:id', ExterneFonction.loggedIn, controllerAdmin.getModifier_eve);
@@ -30,6 +21,7 @@ ROUTE.get('/voir_choix', ExterneFonction.loggedIn, controllerAdmin.getVoir_choix
 
 // *************POST**********************
 ROUTE.post('/ajouter_eve', upload.single('photo_evenement'), controllerAdmin.postAjouter_eve);
+ROUTE.post('/ajouter_image_en_slade', upload.single('photo_evenement'), controllerAdmin.postAjouter_image_en_slade);
 ROUTE.post('/ajouter_info', controllerAdmin.postAjouter_info);
 ROUTE.post('/ajouter_bureau', upload.single('bureau_photo'), controllerAdmin.postAjouter_bureau);
 ROUTE.post('/modifier_info/:id', controllerAdmin.postModifier_info);

@@ -2,6 +2,7 @@ const BASE_AJOUT_EVE = require("../../Models/ajouter_eve");
 const BASE_AJOUT_INFO = require("../../Models/ajouter_info");
 const BASE_MEMBRE_BUREAU = require("../../Models/ajouter_bureau");
 const BASE_CHOIX_TAILLE = require("../../Models/choix_taille");
+const BASE_IMAGE_SLIDE = require('../../Models/image_en_slade');
 const cloudinary = require('../../helper/uploadImage');
 // ******************************************
 
@@ -11,6 +12,12 @@ module.exports.getAjouter_eve = (req, res) => {
 
   const indexOption = { titre_page: "Ajouter évènement", UTILISATEUR_CONNECTE };
   res.render("admin/ajouter_eve", indexOption);
+};
+module.exports.getAjouter_image_en_slade = (req, res) => {
+  const UTILISATEUR_CONNECTE = req.user;
+
+  const indexOption = { titre_page: "Ajouter image en slade", UTILISATEUR_CONNECTE };
+  res.render("admin/ajouter_image_en_slade", indexOption);
 };
 module.exports.getAjouter_info = (req, res) => {
   const UTILISATEUR_CONNECTE = req.user;
@@ -98,6 +105,23 @@ module.exports.postAjouter_eve = async (req, res) => {
     if (e)
       return console.log("ERREUR AU COURS DE L'ENREGISTREMENT DE L'EVENEMENT");
     console.log("ENREGISTREMENT DE L'EVENEMENT A REUSSI");
+  });
+  res.redirect("/");
+};
+module.exports.postAjouter_image_en_slade = async (req, res) => {
+  let {
+    photo_evenement,
+  } = req.body;
+
+  photo_evenement = await cloudinary.uploader.upload(req.file.path);
+  photo_evenement = photo_evenement.secure_url;
+  const NEW_IMAGE_SLIDES = new BASE_IMAGE_SLIDE({
+    photo_evenement,
+  });
+  NEW_IMAGE_SLIDES.save((e) => {
+    if (e)
+      return console.log("ERREUR AU COURS DE L'ENREGISTREMENT DE L'IMAGE");
+    console.log("ENREGISTREMENT DE L'IMAGE A REUSSI");
   });
   res.redirect("/");
 };

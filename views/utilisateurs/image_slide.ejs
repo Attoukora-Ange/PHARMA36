@@ -1,0 +1,23 @@
+<%- include ('../includes/header') %> 
+<div class="evenement">
+    <div class="evenement_info">
+        <div class="evenement_contenue">SLIDES DES IMAGES</div>
+        <div class="photo">
+            <% if (UTILISATEUR_CONNECTE) { %>
+                <% if (IMAGE_SLIDES) { %>
+                    <% IMAGE_SLIDES.forEach(IMAGE_SLIDE => { %>
+                     <div class="evenement_photo">
+                <div class="photo_evenement">
+                    <img src="<%= IMAGE_SLIDE.photo_evenement %>">
+                </div>
+            </div>
+                    <% }) %>
+                    <% } %>
+            <% } %>
+            
+        </div>
+       
+    </div>
+</div>
+
+<%- include ('../includes/footer') %> 
