@@ -1,0 +1,28 @@
+<%- include ('../includes/header') %> 
+<div class="inscription">
+    <div class="titre_formulaire">Modifier une information</div>
+    <form  method="post">
+       
+        <div class="info_generale">
+            <div>
+                <label for="titre_info">Titre de l'information</label>
+                <input id="titre_info" type="text" placeholder="Entrer le titre de l'information" name="titre_info" value="<%= OBTENIR_INFORMATION.titre_info %>">
+            </div>
+            <div>
+                <label for="auteur_info">Auteur de l'information</label>
+                <input id="auteur_info" type="text" placeholder="Entrer le titre de l'information" name="auteur_info" value="<%= OBTENIR_INFORMATION.auteur_info%>">
+            </div>
+            <div>
+                <label for="date_info">Date de publication</label>
+                <input id="date_info" type="date" name="date_info" value="<%= OBTENIR_INFORMATION.date_publication_info %>">
+            </div>
+            <div>
+                <label for="description_info">Description de l'information</label>
+                <textarea name="description_info" id="description_info" cols="30" rows="10" placeholder="Ecriver le contenue de l'information"><%= OBTENIR_INFORMATION.description_info %></textarea>
+            </div>
+            <button>Modifier</button>
+        </div>
+    </form>
+</div>
+
+<%- include ('../includes/footer') %> 

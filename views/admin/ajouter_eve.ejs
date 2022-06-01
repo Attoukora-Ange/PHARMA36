@@ -1,0 +1,31 @@
+<%- include ('../includes/header') %> 
+<div class="inscription">
+    <div class="titre_formulaire">Ajouter un evenement de la promotion</div>
+    <form action="/admin/ajouter_eve" method="post" enctype="multipart/form-data">
+        <div class="info_generale">
+            <div>
+                <label for="type_evenement">Type d'évènement</label> 
+                <select class="type_evenement" id="type_evenement" name="type_evenement">
+                    <option value="neant">--Choisir le type d'évènement--</option>
+                    <option value="Evènement heureux de la promotion">Evènement heureux de la promotion</option>
+                    <option value="Evènement malheureux de la promotion">Evènement malheureux de la promotion</option>
+                </select>
+            </div>
+            <div>
+                <label for="date_evenement">Date</label>
+                <input id="date_evenement" type="date" name="date_evenement">
+            </div>
+            <div>
+                <label for="ajouter_photo">Ajouter une photo</label>
+                <input id="ajouter_photo" type="file" accept=".jpg, .jpeg, .png" name="photo_evenement">
+            </div>
+            <div>
+                <label for="description_evenement">Description de l'évènement</label>
+                <textarea id="description_evenement" cols="30" rows="10" placeholder="Décriver le type d'évènement" name="description_evenement"></textarea>
+            </div>
+            <button>Envoyer</button>
+        </div>
+    </form>
+</div>
+
+<%- include ('../includes/footer') %> 

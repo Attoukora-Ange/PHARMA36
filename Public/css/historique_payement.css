@@ -1,0 +1,58 @@
+.historique_payement .tableau_historique{
+    width: 100%;
+    margin: auto;
+    overflow-x: auto;
+}
+.historique_payement .titre_formulaire{
+    /* background-color: red; */
+    padding: 1rem 0;
+}
+.historique_payement .tableau_historique table{
+    /* background-color: green; */
+    margin: auto;
+    border-collapse: collapse;
+}
+.historique_payement .tableau_historique table tbody tr:nth-child(even){
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.historique_payement .tableau_historique table thead th,
+.historique_payement .tableau_historique table tbody td{
+    border: .5px solid var(--bleu);
+    padding: .5rem;
+    font-size: 1.3rem;
+}
+/* *********BOUTON DU FORMULAIRE PAYEMENT************* */
+.historique_payement .tableau_historique table tbody td form{
+    /* max-width: 600px; */
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 0;
+    background-color: rgba(103, 103, 244, 0.319);
+}
+.historique_payement .tableau_historique table tbody td form button{
+    margin: 0;
+    /* padding: 0rem; */
+    font-size: 1rem;
+    /* height: 2rem; */
+    width: 100%;
+    cursor: pointer;
+}
+.historique_payement .class_montant_total{
+width: 50%;
+margin: auto;
+padding: 1rem;
+}
+.historique_payement .class_montant_total select{
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 1.3rem;
+    outline: none;
+    text-align: center;
+}
+.historique_payement .montant_total {
+    font-size: 2rem;
+    padding: 1.5rem 0;
+    font-weight: 700;
+    text-align: center;
+}

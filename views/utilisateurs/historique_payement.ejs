@@ -1,0 +1,35 @@
+<%- include ('../includes/header') %>
+<div class="inscription historique_payement">
+  <div class="titre_formulaire">Historique des payements</div>
+  <div class="tableau_historique">
+      <table>
+          <thead>
+              <tr>
+                  <th>Date de payement</th>
+                  <th>Type de cotisation</th>
+                  <th>Montant (F CFA)</th>
+                  <th>Numéro de payement</th>
+                  <th>Nom de trésorière</th>
+              </tr>
+          </thead>
+          <tbody>
+            <% if (UTILISATEUR_CONNECTE) { %>
+
+                <% if (HIST_COTISATIONS) { %>
+                    <% HIST_COTISATIONS.forEach(COTISATION => { %>
+                     <tr>
+                    <td style="text-align: center;"><%= COTISATION.date_payement_cotisation %></td>
+                    <td style="text-align: center;"><%= COTISATION.type_cotisation %></td>
+                    <td style="text-align: center;"><%= COTISATION.montant_cotisation %></td>
+                    <td style="text-align: center;"><%= COTISATION.numero_tresoriere_cotisation %></td>
+                    <td style="text-align: center;"><%= COTISATION.nom_tresoriere_cotisation %></td>
+                </tr>
+                    <% }) %>
+                    <% } %>
+                <% } %>
+          </tbody>
+      </table>
+  </div>
+</div>
+
+<%- include ('../includes/footer') %>

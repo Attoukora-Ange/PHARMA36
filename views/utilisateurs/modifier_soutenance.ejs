@@ -1,0 +1,54 @@
+<%- include ('../includes/header') %>
+<div class="inscription">
+  <% if (MODIFIER_PROFIL) { %>
+    <div class="titre_formulaire">Modifier info soutenance</div>
+  <form action="/utilisateur/modifier_soutenance" method="post" enctype="multipart/form-data">
+    <div class="info_generale">
+      <div class="info deux">AVEZ VOUS DEJA SOUTENU ?</div>
+      <div>
+        <div class="class_radio">
+          <input name="soutenue" value="false" type="radio" value="<%= MODIFIER_PROFIL.soutenue == 'false'? MODIFIER_PROFIL.soutenue : 'false' %>" checked>
+          <label for="soutenue">Non</label>
+          <input name="soutenue" value="true" type="radio" value="<%= MODIFIER_PROFIL.soutenue == 'true'? MODIFIER_PROFIL.soutenue : 'true' %>" >
+          <label for="soutenue">Oui</label>
+        </div>
+      </div>
+    </div>
+    <div class="info_generale" id="info_generale">
+      <div class="info deux">INFORMATION GENERALE</div>
+      <div>
+        <div>
+          <label for="date_soutenance">Date de soutenance</label>
+          <input id="date_soutenance" type="date" name="date_soutenance" value="<%= MODIFIER_PROFIL.date_soutenance !='aucune'? MODIFIER_PROFIL.date_soutenance: ''%>">
+        </div>
+        <div>
+          <label for="departement">Département</label>
+          <input id="departement" type="text" placeholder="Entrer le departement" name="departement" value="<%= MODIFIER_PROFIL.departement !='aucune'? MODIFIER_PROFIL.departement : '' %>">
+        </div>
+        <div>
+          <label for="directeur">Directeur</label>
+          <input id="directeur" type="text" placeholder="Entrer le nom de l'encadreur" name="directeur" value="<%= MODIFIER_PROFIL.directeur !='aucune'? MODIFIER_PROFIL.directeur: ''%>">
+        </div>
+        <div>
+          <label for="titre_sujet">Titre du sujet</label>
+          <input id="titre_sujet" type="text" placeholder="Entrer le titre du sujet" name="titre_sujet" value="<%= MODIFIER_PROFIL.titre_sujet !='aucune'? MODIFIER_PROFIL.titre_sujet : '' %>">
+        </div>
+        <div>
+          <div>
+            <label for="resume">Résumé de la thèse</label>
+          </div>
+          <textarea name="resume" id="resume" cols="30" rows="10" placeholder="Entrer le résumé de votre thèse"><%= MODIFIER_PROFIL.resume !='aucune'? MODIFIER_PROFIL.resume : '' %></textarea>
+        </div>
+        <div class="class_fichier_these">
+          <label for="fichier_these">Fichier PDF de la thèse</label>
+          <input id="fichier_these" accept=".pdf" type="file" name="fichier_these_pdf" value="<%= MODIFIER_PROFIL.fichier_pdf %>">
+        </div>
+      </div>
+    </div>
+    <button>Modifier</button>
+  </form>
+  <% } %>
+ 
+</div>
+<script src="/js/radio.js"></script>
+<%- include ('../includes/footer') %>

@@ -1,0 +1,22 @@
+<%- include ('../includes/header') %> 
+
+<div class="inscription connexion">
+    <div class="titre_formulaire">Formulaire de connexion</div>
+    <form action="/utilisateur/connexion" method="post">
+        <div class="confidentialite">
+            <div class="info deux">confidentielle</div>
+             <div>
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="Entrer votre email" name="email">
+        </div>
+        <div>
+            <label for="password">Mot de passe</label>
+            <input id="password" type="password" placeholder="Entrer votre mot de passe" name="password">
+        </div>
+        </div>
+       
+        <button>Envoyer</button>
+    </form>
+</div>
+<script src="/js/connexion.js"></script>
+<%- include ('../includes/footer') %> 

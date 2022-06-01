@@ -1,0 +1,51 @@
+<%- include ('../includes/header') %> 
+<div class="inscription">
+    <div class="titre_formulaire">Payer une cotisation</div>
+    <form id="form" action="/cotisation" method="post">
+       
+        <div class="info_generale">
+            <div>
+                <label for="type_cotisation">Type de cotisation</label>
+                <select class="type_cotisation" id="type_cotisation" name="type_cotisation">
+                    <option value="neant">--Choisir une option--</option>
+                    <option value="Cotisation de soutenance de thèse">Soutenance de thèse</option>
+                    <option value="Cotisation de mariage">Mariage</option>
+                    <option value="Cotisation de naissance">Naissance de bébé</option>
+                    <option value="Cotisation de gala">Gala</option>
+                    <option value="Cotisation de décès">Déces</option>
+                    <option value="Les autres Cotisations">Autres</option>
+                </select>
+            </div>
+            <div>
+                <label for="montant_cotisation">Montant* (F CFA)</label>
+                <input id="montant_cotisation" type="number" placeholder="Entrer le montant de votre cotisation" name="montant_cotisation">
+            </div>
+            <div>
+                <label for="type_payement">Type de payement</label>
+                <select class="type_payement" id="type_payement" name="type_payement_cotisation">
+                    <option value="neant">--Choisir une option--</option>
+                    <option value="Orange money">Orange Money</option>
+                    <option value="MTN money">MTN Money</option>
+                    <option value="Flooz">Flooz</option>
+                    <option value="Wave">Wave</option>
+                    <option value="Autre">Autres</option>
+                </select>
+            </div>
+            <div>
+                <label for="nom_tresoriere">Nom de la trésorière</label>
+                <input type="text" id="nom_tresoriere" placeholder="Entrer le nom de la trésorière" name="nom_tresoriere_cotisation">
+            </div>
+            <div>
+                <label for="numero_depot">Numéro de depot</label>
+                <input id="numero_depot" type="tel" placeholder="Entrer le nunero de depot" name="numero_depot_cotisation">
+            </div>
+            <div>
+                <label for="date_payement">Date de payement</label>
+                <input id="date_payement" type="date" name="date_payement_cotisation">
+            </div>
+            <button>Envoyer</button>
+        </div>
+    </form>
+</div>
+<!-- <script src="/js/cotisation.js"></script> -->
+<%- include ('../includes/footer') %> 

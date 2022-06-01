@@ -1,0 +1,109 @@
+<%- include ('../includes/header') %>
+<div class="inscription">
+  <% if (MODIFIER_PROFIL) { %>
+    <div class="titre_formulaire">Modifier votre profil</div>
+  <form id="form" action="/utilisateur/modifier_profil" method="post" enctype="multipart/form-data">
+    <div class="info_personnelle">
+      <div class="champ_profil">
+        <label for="photo_profile"></label>
+        <input id="photo_profile" type="file" accept=".jpg, .jpeg, .png" name="fichier_photo_profil" value="<%= MODIFIER_PROFIL.photo_profil %>">
+      </div>
+      <input  type="text" readonly id="champs_vide" style="background-color: inherit; opacity: 0;; text-align: center; width:20%; margin-top: 1.5rem; height: 1.5rem;" value="<%= MODIFIER_PROFIL.photo_profil %>">
+      <div class="info">INFORMATION PERSONNELLE</div>
+      <div class="description">civilité</div>
+      <div class="civilite">
+        <div>
+          <div>
+            <label for="nom">Nom :</label>
+            <input id="nom" type="text" placeholder="Entrer votre nom" name="nom" value="<%= MODIFIER_PROFIL.nom %>">
+          </div>
+          <div>
+            <label for="prenom">Prénom :</label>
+            <input id="prenom" type="text" placeholder="Entrer votre prénom" name="prenom" value="<%= MODIFIER_PROFIL.prenom %>">
+          </div>
+
+        </div>
+        <div>
+          <div>
+            <label for="naissance">Date de naissance :</label>
+            <input id="naissance" type="date" name="date_naissance" value="<%= MODIFIER_PROFIL.date_naissance %>">
+          </div>
+          <div>
+            <label for="domicile">Domicile :</label>
+            <input id="domicile" type="text" placeholder="Entrer votre lieu d'habitation" name="domicile" value="<%= MODIFIER_PROFIL.domicile %>">
+          </div>
+        </div>
+      </div>
+      <div class="description">Contact</div>
+      <div class="contact">
+        <div>
+          <div>
+            <label for="tel">Tel :</label>
+            <input id="tel" type="tel" placeholder="Entrer votre numéro de télephone" name="telephone" value="<%= MODIFIER_PROFIL.telephone %>">
+          </div>
+          <div>
+            <label for="email">Email :</label>
+            <input id="email" type="email" placeholder="Entrer votre email" name="email" value="<%= MODIFIER_PROFIL.email %>">
+          </div>
+
+          <label for="social">Réseau social</label>
+          <select name="reseau_social" id="social" value="<%= MODIFIER_PROFIL.reseau_social%>">
+            <option value="Facebook" selected>Facebook</option>
+            <option value="Twitter">Twitter</option>
+            <option value="Instagram">Instagram</option>
+          </select>
+        </div>
+        <div>
+          <div>
+            <label for="lieu">Lieu d'exercice :</label>
+            <input id="lieu" type="text" placeholder="Entrer votre lieu d'exercice" name="lieu_exercice" value="<%= MODIFIER_PROFIL.lieu_exercice %>">
+          </div>
+          <div>
+            <label for="contact_parent">Contact parent :</label>
+            <input id="contact_parent" type="tel" placeholder="Entrer le conctact du parent" name="contact_parent" value="<%= MODIFIER_PROFIL.contact_parent %>">
+          </div>
+          <div>
+            <label for="nom_reseaux">Identifiant sur le resaux :</label>
+            <input type="text" id="nom_reseaux" placeholder="Comment vous retrouvez sur le reseau" name="identifiant_reseau" value="<%= MODIFIER_PROFIL.identifiant_reseau%>">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="info_generale">
+      <div class="info deux">STATUS DANS LA PROMOTION</div>
+      <div>
+        <div>
+          <label for="choix_status">Choix du status*</label>
+          <select name="choix_status" id="choix_status" value="<%= MODIFIER_PROFIL.status_promotion %>">
+              <option value="Membre actif" selected>Membre actif</option>
+              <option value="Présidente">Présidente</option>
+              <option value="Vice président">Vice président</option>
+              <option value="Trésorière">Trésorière</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="info_generale">
+      <div class="info deux"></div>
+    </div>
+    <div class="confidentialite">
+      <div class="info deux">confidentialité</div>
+      <div>
+        <label for="conf_password">Ancien mot de passe</label>
+        <input id="conf_password" type="password" placeholder="Confirmer votre mot de passe" name="conf_password">
+      </div>
+      <div>
+        <label for="password">Nouveau mot de passe</label>
+        <input id="password" type="password" placeholder="Entrer votre mot de passe" name="password">
+      </div>
+     
+    </div>
+
+    <button>Modifier</button>
+  </form>
+  <% } %>
+ 
+</div>
+<script src="/js/inser_photo.js"></script>
+<script src="/js/modifier_profil.js"></script>
+<%- include ('../includes/footer') %>

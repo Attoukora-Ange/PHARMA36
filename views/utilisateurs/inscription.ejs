@@ -1,0 +1,105 @@
+<%- include ('../includes/header') %>
+<div class="inscription">
+  <div class="titre_formulaire">Formulaire d'inscription</div>
+  <form action="/inscription" method="post" enctype="multipart/form-data">
+    <div class="info_personnelle">
+      <div class="champ_profil">
+        <label for="photo_profile">Photo</label>
+        <input id="photo_profile" type="file" accept=".jpg, .jpeg, .png" name="fichier_photo_profil">
+      </div>
+      <input  type="text" readonly id="champs_vide" style="background-color: inherit; text-align: center; width:20%; margin-top: 1.5rem; height: 1.5rem;">
+      <div class="info">INFORMATION PERSONNELLE</div>
+      <div class="description">civilité</div>
+      <div class="civilite">
+        <div>
+          <div>
+            <label for="nom">Nom :</label>
+            <input id="nom" type="text" placeholder="Entrer votre nom" name="nom">
+          </div>
+          <div>
+            <label for="prenom">Prénom :</label>
+            <input id="prenom" type="text" placeholder="Entrer votre prénom" name="prenom">
+          </div>
+
+        </div>
+        <div>
+          <div>
+            <label for="naissance">Date de naissance :</label>
+            <input id="naissance" type="date" name="date_naissance">
+          </div>
+          <div>
+            <label for="domicile">Domicile :</label>
+            <input id="domicile" type="text" placeholder="Entrer votre lieu d'habitation" name="domicile">
+          </div>
+        </div>
+      </div>
+      <div class="description">Contact</div>
+      <div class="contact">
+        <div>
+          <div>
+            <label for="tel">Tel :</label>
+            <input id="tel" type="tel" placeholder="Entrer votre numéro de télephone" name="telephone">
+          </div>
+          <div>
+            <label for="email">Email :</label>
+            <input id="email" type="email" placeholder="Entrer votre email" name="email">
+          </div>
+
+          <label for="social">Réseau social</label>
+          <select name="reseau_social" id="social">
+            <option value="Facebook">Facebook</option>
+            <option value="Twitter">Twitter</option>
+            <option value="Instagram">Instagram</option>
+          </select>
+        </div>
+        <div>
+          <div>
+            <label for="lieu">Lieu d'exercice :</label>
+            <input id="lieu" type="text" placeholder="Entrer votre lieu d'exercice" name="lieu_exercice">
+          </div>
+          <div>
+            <label for="contact_parent">Contact parent :</label>
+            <input id="contact_parent" type="tel" placeholder="Entrer le conctact du parent" name="contact_parent">
+          </div>
+          <div>
+            <label for="nom_reseaux">Identifiant sur le resaux :</label>
+            <input type="text" id="nom_reseaux" placeholder="Comment vous retrouvez sur le reseau" name="identifiant_reseau">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="info_generale">
+      <div class="info deux">STATUS DANS LA PROMOTION</div>
+      <div>
+        <div>
+          <label for="choix_status">Choix du status*</label>
+          <select name="choix_status" id="choix_status">
+              <option value="Membre actif">Membre actif</option>
+              <option value="Présidente">Présidente</option>
+              <option value="Vice président">Vice président</option>
+              <option value="Trésorière">Trésorière</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="info_generale" id="info_generale">
+      <div class="info deux"></div>
+    </div>
+    <div class="confidentialite">
+      <div class="info deux">confidentialité</div>
+      <div>
+        <label for="password">Mot de passe</label>
+        <input id="password" type="password" placeholder="Entrer votre mot de passe" name="password">
+      </div>
+      <div>
+        <label for="conf_password">Confirmation</label>
+        <input id="conf_password" type="password" placeholder="Confirmer votre mot de passe" name="conf_password">
+      </div>
+    </div>
+
+    <button>Envoyer</button>
+  </form>
+</div>
+<!-- <script src="/js/radio.js"></script> -->
+<script src="/js/inscription.js"></script>
+<%- include ('../includes/footer') %>

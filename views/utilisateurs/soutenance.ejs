@@ -1,0 +1,51 @@
+<%- include ('../includes/header') %>
+<div class="inscription">
+  <div class="titre_formulaire">Information sur la soutenance</div>
+  <form action="/utilisateur/soutenance" method="post" enctype="multipart/form-data">
+    <div class="info_generale">
+      <div class="info deux">AVEZ VOUS DEJA SOUTENU ?</div>
+      <div>
+        <div class="class_radio">
+          <input name="soutenue" value="false" type="radio" checked>
+          <label for="">Non</label>
+          <input name="soutenue" value="true" type="radio">
+          <label for="">Oui</label>
+        </div>
+      </div>
+    </div>
+    <div class="info_generale" id="info_generale">
+      <div class="info deux">INFORMATION GENERALE</div>
+      <div>
+        <div>
+          <label for="date_soutenance">Date de soutenance</label>
+          <input id="date_soutenance" type="date" name="date_soutenance">
+        </div>
+        <div>
+          <label for="departement">Département</label>
+          <input id="departement" type="text" placeholder="Entrer le departement" name="departement">
+        </div>
+        <div>
+          <label for="directeur">Directeur</label>
+          <input id="directeur" type="text" placeholder="Entrer le nom de l'encadreur" name="directeur">
+        </div>
+        <div>
+          <label for="titre_sujet">Titre du sujet</label>
+          <input id="titre_sujet" type="text" placeholder="Entrer le titre du sujet" name="titre_sujet">
+        </div>
+        <div>
+          <div>
+            <label for="resume">Résumé de la thèse</label>
+          </div>
+          <textarea name="resume" id="resume" cols="30" rows="10" placeholder="Entrer le résumé de votre thèse"></textarea>
+        </div>
+        <div class="class_fichier_these">
+          <label for="fichier_these">Fichier PDF de la thèse</label>
+          <input id="fichier_these" accept=".pdf" type="file" name="fichier_these_pdf">
+        </div>
+      </div>
+    </div>
+    <button>Envoyer</button>
+  </form>
+</div>
+<script src="/js/radio.js"></script>
+<%- include ('../includes/footer') %>

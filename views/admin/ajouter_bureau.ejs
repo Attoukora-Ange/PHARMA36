@@ -1,0 +1,22 @@
+<%- include ('../includes/header') %> 
+<div class="inscription">
+    <div class="titre_formulaire">Ajouter un membre du bureau</div>
+    <form action="/admin/ajouter_bureau" method="post" enctype="multipart/form-data">
+        <div class="info_generale">
+            <div>
+                <label for="nom_bureau">Nom d'un membre du bureau</label>
+                <input id="nom_bureau" type="text" name="nom_bureau">
+            </div>
+            <div>
+                <label for="titre_bureau">Titre du membre du bureau</label>
+                <input id="titre_bureau" type="text" name="titre_bureau" >
+            </div>
+            <div>
+                <label for="ajouter_photo">Ajouter une photo</label>
+                <input id="ajouter_photo" type="file" accept=".jpg, .jpeg, .png" name="bureau_photo">
+            </div>
+            <button>Envoyer</button>
+        </div>
+    </form>
+</div>
+<%- include ('../includes/footer') %> 

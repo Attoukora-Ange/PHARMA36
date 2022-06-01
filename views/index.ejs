@@ -1,0 +1,153 @@
+<%- include('includes/header') %>
+<main>
+  <div class="carrouselle">
+    <div class="image_carousselle">
+      <div class="image_carousselle_slide visible">
+        <img src="images/carosselle/image_17.jpg" alt="image de promotion">
+        <img src="images/carosselle/image_10.jpg" alt="image de promotion">
+        <img src="images/carosselle/image_16.jpg" alt="image de promotion">
+      </div>
+      <div class="image_carousselle_slide">
+        <img src="images/carosselle/image_11.jpg" alt="image de promotion">
+        <img src="images/carosselle/image_3.jpg" alt="image de promotion">
+        <img src="images/carosselle/image_15.jpg" alt="image de promotion">
+      </div>
+      <div class="image_carousselle_slide">
+        <img src="images/carosselle/image_4.jpg" alt="image de promotion">
+        <img src="images/carosselle/image_13.jpg" alt="image de promotion">
+        <img src="images/carosselle/image_5.jpg" alt="image de promotion">
+      </div>
+      <div class="image_carousselle_slide">
+        <img src="images/carosselle/image_6.jpg" alt="image de promotion">
+        <img src="images/carosselle/image_14.jpg" alt="image de promotion">
+        <img src="images/carosselle/image_7.jpg" alt="image de promotion">
+      </div>
+    </div>
+  </div>
+  <% if (TOUS_EVENEMENTS_PROMOTIONS) { %>
+    <div class="evenement">
+    <div class="evenement_info">
+      <div class="evenement_contenue">EVENEMENT HEUREUX DE LA PROMOTION</div>
+      <div class="photo">
+        <% TOUS_EVENEMENTS_PROMOTIONS.forEach(UN_EVENEMENT => { %>
+            <% if (UN_EVENEMENT.type_evenement == 'Evènement heureux de la promotion') { %>
+              <div class="evenement_photo">
+          <div class="photo_evenement">
+            <img src="<%= UN_EVENEMENT.photo_evenement %>" alt="">
+          </div>
+          <div class="evenement_date"><%= UN_EVENEMENT.date_evenement %></div>
+          <div class="evenement_description"><%= UN_EVENEMENT.description_evenement %></div>
+          <div class="button_photo a_cote_bouton">
+            <div class="button">
+                <% if (UTILISATEUR_CONNECTE) { %>
+                <% if(UTILISATEUR_CONNECTE.status_promotion == 'Présidente' || UTILISATEUR_CONNECTE.status_promotion == 'Vice président') { %>
+                <button class="modifier"><a href="/admin/modifier_eve/<%= UN_EVENEMENT._id %>">Modifier</a></button>
+                <form action="/admin/supprimer_eve" method="post">
+                  <input type="hidden" value="<%= UN_EVENEMENT._id %>" name="id">
+                  <button id="supprimer">Supprimer</button>
+                </form>
+                <% } %>
+                <% } %>
+              </div>
+          </div>
+        </div>
+            <% } %>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+    <div class="evenement">
+        <div class="evenement_info">
+          <div class="evenement_contenue">EVENEMENT MALHEUREUX DE LA PROMOTION</div>
+          <div class="photo">
+            <% TOUS_EVENEMENTS_PROMOTIONS.forEach(UN_EVENEMENT => { %>
+                <% if (UN_EVENEMENT.type_evenement == 'Evènement malheureux de la promotion') { %>
+                  <div class="evenement_photo">
+              <div class="photo_evenement">
+                <img src="<%= UN_EVENEMENT.photo_evenement %>" alt="">
+              </div>
+              <div class="evenement_date"><%= UN_EVENEMENT.date_evenement %></div>
+              <div class="evenement_description"><%= UN_EVENEMENT.description_evenement %></div>
+              <div class="button_photo a_cote_bouton">
+                <div class="button">
+                    <% if (UTILISATEUR_CONNECTE) { %>
+                    <% if(UTILISATEUR_CONNECTE.status_promotion == 'Présidente' || UTILISATEUR_CONNECTE.status_promotion == 'Vice président') { %>
+                    <button class="modifier"><a href="/admin/modifier_eve/<%= UN_EVENEMENT._id%>">Modifier</a></button>
+                    <form action="/admin/supprimer_eve" method="post">
+                      <input type="hidden" value="<%= UN_EVENEMENT._id %>" name="id">
+                      <button id="supprimer">Supprimer</button>
+                    </form>
+                    <% } %>
+                    <% } %>
+                  </div>
+              </div>
+            </div>
+                <% }%>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+  <% } %>
+  
+  <div class="evenement">
+    <div class="evenement_info">
+      <div class="evenement_contenue">NOTE D'INFORMATION</div>
+      <% if (INFO) { %>
+      <div class="evenement_titre deux"><%= INFO.titre_info %></div>
+      <div class="contenu_info"><%= INFO.description_info %></div>
+      <div class="evenement_detail">
+        <div class="evenement_detail_info">
+          <div class="evenement_date">Abidjan le : <%= INFO.date_publication_info %> </div>
+          <div class="evenement_auteur a_cote_bouton"><%= INFO.auteur_info %> </div>
+          <div class="button">
+            <% if (UTILISATEUR_CONNECTE) { %>
+            <% if(UTILISATEUR_CONNECTE.status_promotion == 'Présidente' || UTILISATEUR_CONNECTE.status_promotion == 'Vice président') { %>
+            <button class="modifier"><a href="/admin/modifier_info/<%= INFO._id%>">Modifier</a></button>
+            <form action="/admin/supprimer_info" method="post">
+              <input type="hidden" value="<%= INFO._id %>" name="id">
+              <button id="supprimer">Supprimer</button>
+            </form>
+            <% } %>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <% }else{%>
+      <div class="evenement_titre deux">IL N'Y A AUCUNE INFORMATION DISPONIBLE ACTUELLEMENT</div>
+      <%} %>
+    </div>
+  </div>
+  <% if (MEMMBRES_BUREAUX) { %>
+   <div class="membre">
+    <div class="membre_info">
+      <div class="membre_contenue">MEMBRES DU BUREAU DE LA PHARMA36</div>
+      <div class="membre_titre"></div>
+      <div class="photo">
+          <% MEMMBRES_BUREAUX.forEach(MEMBRE_BUREAU => { %>
+             <div class="membre_photo"> 
+          <img src="<%= MEMBRE_BUREAU.bureau_photo %>" alt="">
+          <div class="membre_description"><%= MEMBRE_BUREAU.nom_bureau %></div>
+          <div class="membre_description"><%= MEMBRE_BUREAU.titre_bureau %></div>
+          <div class="button_photo a_cote_bouton">
+            <div class="button">
+                <% if (UTILISATEUR_CONNECTE) { %>
+                <% if(UTILISATEUR_CONNECTE.status_promotion == 'Présidente' || UTILISATEUR_CONNECTE.status_promotion == 'Vice président') { %>
+                <button class="modifier"><a href="/admin/modifier_bureau/<%= MEMBRE_BUREAU._id %>">Modifier</a></button>
+                <form action="/admin/supprimer_membre_bureau" method="post">
+                  <input type="hidden" value="<%= MEMBRE_BUREAU._id %>" name="id">
+                  <button id="supprimer">Supprimer</button>
+                </form>
+                <% } %>
+                <% } %>
+              </div>
+             </div>
+         </div>
+          <% }) %>
+      </div>
+    </div>
+  </div>
+  <% } %>
+  
+</main>
+<script src="js/script.js"></script>
+<%- include ('includes/footer') %>

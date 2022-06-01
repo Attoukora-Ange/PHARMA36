@@ -1,0 +1,19 @@
+<%- include ('../includes/header') %> 
+<div class="inscription connexion">
+    <div class="titre_formulaire">Choix de la taille pour les toges</div>
+    <form action="/evenement" method="post" class="evenement_un">
+        <div class="confidentialite">
+        <div>
+            <label class="class_choix" for="choix">Faire votre choix</label>
+            <select name="choix_taille" id="choix">
+                <option value="petite">Petite [L]</option>
+                <option value="moyenne">Moyenne [M]</option>
+                <option value="grande">Grande [XL]</option>
+            </select>
+        </div>
+        </div>
+        <button>Envoyer</button>
+    </form>
+</div>
+
+<%- include ('../includes/footer') %> 

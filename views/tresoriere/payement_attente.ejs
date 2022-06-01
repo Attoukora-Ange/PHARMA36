@@ -1,0 +1,46 @@
+<%- include ('../includes/header') %>
+<div class="inscription historique_payement">
+  <div class="titre_formulaire">Cotisation en attente</div>
+  <div class="tableau_historique">
+      <table>
+          <thead>
+              <tr>
+                  <th>Date</th>
+                  <th>Nom et prénom</th>
+                  <th>Type de cotisation</th>
+                  <th>Montant (F CFA)</th>
+                  <th>Numero dépot</th>
+                  <th>Trésorière</th>
+              </tr>
+          </thead>
+          <tbody>
+               <% if (PAYEMENT_ATTENTES) { %>
+                <% PAYEMENT_ATTENTES.forEach(PAYEMENT => { %>
+                 <tr>
+                  <td style="text-align: center;"><%= PAYEMENT.date_payement_cotisation %></td>
+                  <td style="text-align: center;"><%= PAYEMENT.nom_membre %> <%= PAYEMENT.prenom_membre %></td>
+                  <td style="text-align: center;"><%= PAYEMENT.type_cotisation %></td>
+                  <td style="text-align: center;"><%= PAYEMENT.montant_cotisation %></td>
+                  <td style="text-align: center;"><%= PAYEMENT.numero_tresoriere_cotisation %></td>
+                  <td style="text-align: center;"><%= PAYEMENT.nom_tresoriere_cotisation %></td>
+                  <td>
+                    <form action="/tresoriere/cotisation_attente" method="post">
+                        <input type="hidden" name="id" value="<%= PAYEMENT._id %>">
+                        <button>Valider</button>
+                    </form>
+              </td>
+                  <td>
+                    <form action="/tresoriere/supprimer_cotisation_attente" method="post">
+                        <input type="hidden" name="id" value="<%= PAYEMENT._id %>">
+                        <button>Annuler</button>
+                    </form>
+              </td>
+              </tr>
+                <% }) %>
+               <% } %>
+          </tbody>
+      </table>
+  </div>
+</div>
+
+<%- include ('../includes/footer') %>

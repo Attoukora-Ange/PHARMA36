@@ -1,0 +1,32 @@
+<%- include ('../includes/header') %> 
+<div class="inscription">
+    <div class="titre_formulaire">Modifier un evenement de la promotion</div>
+    <form  method="post" enctype="multipart/form-data">
+        <div class="info_generale">
+            <div>
+                <label for="type_evenement">Type d'évènement</label>
+                <select  class="type_evenement" name="type_evenement" id="type_evenement" value="<%= MODIFIER_EVENEMENT.type_evenement %>">
+                    <option value="Evènement heureux de la promotion">Evènement heureux de la promotion</option>
+                    <option value="Evènement malheureux de la promotion">Evènement malheureux de la promotion</option>
+                </select>
+            </div>
+            <div>
+                <label for="date_evenement">Date</label>
+                <input id="date_evenement" type="date" value="<%= MODIFIER_EVENEMENT.date_evenement %>">
+            </div>
+            <div>
+                <label for="ajouter_photo">Ajouter une photo</label>
+                <input id="ajouter_photo" type="file" accept=".jpg, .jpeg, .png" name="photo_evenement" value="<%= MODIFIER_EVENEMENT.photo_evenement %>">
+                <input style="background-color: rgba(0, 0, 0, 0.5);" type="text" readonly value="<%= MODIFIER_EVENEMENT.photo_evenement %>" >
+            </div>
+            
+            <div>
+                <label for="description_evenement">Description de l'évènement</label>
+                <textarea name="description_evenement" id="description_evenement" cols="30" rows="10" placeholder="Décriver le type d'évènement"><%= MODIFIER_EVENEMENT.description_evenement %></textarea>
+            </div>
+        <button>Modifier</button>
+    </div>
+    </form>
+</div>
+
+<%- include ('../includes/footer') %> 

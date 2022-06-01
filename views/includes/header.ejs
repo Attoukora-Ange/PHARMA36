@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Attoukora">
+  <meta name="keywords" content="promotion, ufr spb, université de cocody, pharmacie, pharmaciens, pharma36" />
+  <meta name="description" content="Site de la 36ème promotion des Pharmaciens de Côte d'Ivoire de l'URF des Sciences Pharmaceutiques et Biologiques">
+  <meta name="robots" content="all" />
+  <link rel="shortcut icon" href="/images/logo.jpg" type="image/x-icon">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/utilisateur.css">
+  <link rel="stylesheet" href="/css/inscription.css">
+  <link rel="stylesheet" href="/css/detail_membre.css">
+  <link rel="stylesheet" href="/css/ajouter.css">
+  <link rel="stylesheet" href="/css/historique_payement.css">
+  <title>PHARMA36 | <%= titre_page %> </title>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <div class="text_logo">PHARMA36</div>
+      <div class="image_logo"><img src="/images/logo.jpg" alt="logo pharma 36"></div>
+      <div class="text_logo">
+        <% if (UTILISATEUR_CONNECTE) { %>
+        <li>BIENVENUE Dr <%= UTILISATEUR_CONNECTE.nom %></li>
+        <% } %>
+      </div>
+    </div>
+    <div class="top_bar">
+      <ul>
+        <li class="active_menu"><a href="/">ACCUEIL</a></li>
+        <li class="class_utilisateur"><a href="#">ESPACE UTILISATEUR</a>
+          <div class="sous_menu">
+            <ul>
+              <% if (UTILISATEUR_CONNECTE) { %>
+              <li><a href="/utilisateur/modifier_profil">MODIFIER PROFIL</a></li>
+                <% if (UTILISATEUR_CONNECTE.soutenue == true) { %>
+                  <li><a href="/utilisateur/modifier_soutenance">MODIFIER INFORMATION DE SOUTENANCE</a></li>
+                 
+                <% } %>
+          
+              <% if (UTILISATEUR_CONNECTE.soutenue == false) { %>
+                <li><a href="/utilisateur/soutenance">SOUTENANCE</a></li>
+              <% } %>
+              <li>
+                <form action="/utilisateur/logOut?_method=DELETE" method="post">
+                  <button>DECONNEXION</button>
+                </form>
+              </li>
+              <% }else{%>
+              <li><a href="/utilisateur/connexion">CONNEXION</a></li>
+              <li><a href="/utilisateur/inscription">INSCRIPTION</a></li>
+              <%} %>
+            </ul>
+          </div>
+        </li>
+        <% if (UTILISATEUR_CONNECTE) { %>
+        <li><a href="/evenement">EVENEMENT</a></li>
+        <li><a href="/cotisation">COTISATION</a></li>
+        <li><a href="/historique_payement">HISTORIQUE COTISATION</a></li>
+        <li><a href="/contact">CONTACT PROMOTION</a></li>
+        <% if (UTILISATEUR_CONNECTE.status_promotion == 'Présidente' || UTILISATEUR_CONNECTE.status_promotion == 'Vice président') { %>
+        <li class="class_utilisateur"><a href="#">ADMINISTRATEUR</a>
+          <div class="sous_menu">
+            <ul>
+              <li><a href="/admin/ajouter_eve">AJOUTER UN EVENEMENT</a></li>
+              <li><a href="/admin/ajouter_info">AJOUTER UNE INFORMATION</a></li>
+              <li><a href="/admin/ajouter_bureau">AJOUTER UN MEMBRE DU BUREAU</a></li>
+              <li><a href="/admin/voir_choix">VOIR LES CHOIX</a></li>
+              <% if (UTILISATEUR_CONNECTE.status_promotion == 'Présidente') { %>
+              <li><a href="/tresoriere/archive_cotisation">TOUTES LES COTISATIONS</a></li>
+              <% } %>
+            </ul>
+          </div>
+        </li>
+        <% } %>
+        <% if (UTILISATEUR_CONNECTE.status_promotion == 'Trésorière') { %>
+        <li class="class_utilisateur"><a href="#">NOTRE ARGENT</a>
+          <div class="sous_menu">
+            <ul>
+              <li><a href="/tresoriere/cotisation_attente">COTISATION EN ATTENTE</a></li>
+              <li><a href="/tresoriere/archive_cotisation">TOUTES LES COTISATIONS</a></li>             
+            </ul>
+          </div>
+        </li>
+        <% } %>
+
+        <% } %>
+
+        <li><a href="/qui_sommes_nous">QUI SOMMES NOUS</a></li>
+      </ul>
+    </div>
+  </header>

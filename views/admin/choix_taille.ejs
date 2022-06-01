@@ -1,0 +1,34 @@
+<%- include ('../includes/header') %>
+<div class="inscription historique_payement">
+  <div class="titre_formulaire">tailles des vetements</div>
+  <div class="tableau_historique">
+      <table>
+          <thead>
+              <tr>
+                  <th>Date</th>
+                  <th>Nom - prénom</th>
+                  <th>Taille choisie</th>
+              </tr>
+          </thead>
+          <tbody>
+              <% if (TOUS_CHOIX) { %>
+                <% TOUS_CHOIX.forEach(CHAQUE_CHOIX => { %>
+                    <tr>
+                        <td><%= CHAQUE_CHOIX.date_choix %></td>
+                        <td><%= CHAQUE_CHOIX.nom %> <%= CHAQUE_CHOIX.nom %></td>
+                        <td><%= CHAQUE_CHOIX.choix %></td>
+                        <td>
+                          <form action="/admin/supprimer_choix" method="post">
+                              <input type="hidden" name="id" value="<%=CHAQUE_CHOIX._id %>">
+                              <button>Supprimer</button>
+                          </form>
+                        </td>
+                    </tr>
+                <% }) %>
+              <% } %> 
+          </tbody>
+      </table>
+  </div>
+</div>
+
+<%- include ('../includes/footer') %>

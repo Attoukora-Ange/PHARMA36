@@ -1,0 +1,54 @@
+
+.evenement .detail_sur_membre{
+    display: flex;
+    background-color: rgba(28, 28, 28, 0.085);
+    width: 70%;
+    max-width: 700px;
+    margin: 1rem auto;
+    padding: 1rem;
+}
+.evenement .detail_sur_membre .photo_contact{
+    flex: 1;
+    flex-shrink: 0;
+}
+.evenement .detail_sur_membre .photo_contact img{
+    width: 200px;
+    height: 100%;
+    object-fit: cover;
+}
+.evenement .detail_sur_membre .contenue{
+    padding: 0 1rem;
+    flex-shrink: 3;
+    flex: 2;
+}    
+.evenement .detail_sur_membre .contenue .detail_nom{
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 1rem 0;
+}    
+.evenement .detail_sur_membre .contenue .detail_nom ~ div{
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    padding: .2rem 0;
+}    
+@media screen and (max-width: 700px) {
+    .evenement .detail_sur_membre{
+        display: block;
+        width: 70%;
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 1rem;
+        background-color: green;
+    }
+    .evenement .detail_sur_membre .photo_contact{
+        width: 50%;
+        margin: 0 auto;
+    }
+    .evenement .detail_sur_membre .photo_contact img{
+        width: 100%;
+        object-fit: cover;
+    }
+    
+}

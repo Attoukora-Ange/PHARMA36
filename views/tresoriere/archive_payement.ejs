@@ -1,0 +1,55 @@
+<%- include ('../includes/header') %>
+<div class="inscription historique_payement">
+  <div class="titre_formulaire">Archives des cotisations</div>
+  <div class="class_montant_total">
+      <select name="montant_type_cotisation" id="class_montant_total">
+        <option value="Montant total">Montant total</option>
+        <option value="Cotisation de soutenance de thèse">Montant soutenance de thèse</option>
+        <option value="Cotisation de mariage">Montant mariage</option>
+        <option value="Cotisation de naissance">Montant naissance de bébé</option>
+        <option value="Cotisation de gala">Montant gala</option>
+        <option value="Cotisation de décès">Montant décès</option>
+        <option value="Les autres Cotisations">Montant autres</option>
+      </select>
+      <div class="montant_total"></div>
+  </div>
+  <div class="tableau_historique">
+      <table>
+          <thead>
+              <tr>
+                  <th>Date</th>
+                  <th>Nom et prénom</th>
+                  <th>Type de cotisation</th>
+                  <th>Montant (F CFA)</th>
+                  <th>Numero dépot</th>
+                  <th>Trésorière</th>
+              </tr>
+          </thead>
+          <tbody>
+            <% if (ARCHIVAGE_PAYEMENTS) { %>
+             <% ARCHIVAGE_PAYEMENTS.forEach(ARCHIVAGE => { %>
+              <tr>
+               <td style="text-align: center;"><%= ARCHIVAGE.date_payement_cotisation %></td>
+               <td style="text-align: center;"><%= ARCHIVAGE.nom_membre %> <%= ARCHIVAGE.prenom_membre %></td>
+               <td id="type_cotisation" style="text-align: center;"><%= ARCHIVAGE.type_cotisation %></td>
+               <td id="montant" style="text-align: center;"><%= ARCHIVAGE.montant_cotisation %></td>
+               <td style="text-align: center;"><%= ARCHIVAGE.numero_tresoriere_cotisation %></td>
+               <td style="text-align: center;"><%= ARCHIVAGE.nom_tresoriere_cotisation %></td>
+                <% if (UTILISATEUR_CONNECTE.status_promotion == 'Présidente') { %>
+                 <td>
+                 <form action="/tresoriere/supprimer_cotisation_archive" method="post">
+                     <input type="hidden" name="id" value="<%= ARCHIVAGE._id %>">
+                     <button>Supprimer</button>
+                 </form>
+           </td>
+                <% } %>
+               
+           </tr>
+             <% }) %>
+            <% } %>
+       </tbody>
+      </table>
+  </div>
+</div>
+<script src="/js/calcul_montant.js"></script>
+<%- include ('../includes/footer') %>

@@ -1,0 +1,8 @@
+/* *******AJOUTER EVENEMENT************* */
+.info_generale .type_evenement{
+    display: flex;
+    width: 90%;
+    height: 2rem;
+    margin: 0 auto;
+    outline: none;
+}
