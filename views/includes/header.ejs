@@ -59,7 +59,16 @@
           </div>
         </li>
         <% if (UTILISATEUR_CONNECTE) { %>
-        <li><a href="/evenement">EVENEMENT</a></li>
+        <li class="class_utilisateur"><a  href="#">POLO ET TOGE POUR GALA</a>
+          <div class="sous_menu">
+            <ul>
+              <% if (UTILISATEUR_CONNECTE) { %>
+              <li><a href="/utilisateur/evenement/polos">TAILLE DES POLOS</a></li>          
+              <li><a href="/utilisateur/evenement/toges">MESURE DES TOGE</a></li>          
+              <% }%>
+            </ul>
+          </div>
+        </li>
         <li><a href="/cotisation">COTISATION</a></li>
         <li><a href="/historique_payement">HISTORIQUE COTISATION</a></li>
         <li><a href="/contact">CONTACT PROMOTION</a></li>
@@ -70,7 +79,8 @@
               <li><a href="/admin/ajouter_eve">AJOUTER UN EVENEMENT</a></li>
               <li><a href="/admin/ajouter_info">AJOUTER UNE INFORMATION</a></li>
               <li><a href="/admin/ajouter_bureau">AJOUTER UN MEMBRE DU BUREAU</a></li>
-              <li><a href="/admin/voir_choix">VOIR LES CHOIX</a></li>
+              <li><a href="/admin/voir_choix_polos">VOIR LES CHOIX DE POLOS</a></li>
+              <li><a href="/admin/voir_choix_toges">VOIR LES CHOIX DE TOGES</a></li>
               <% if (UTILISATEUR_CONNECTE.status_promotion == 'Présidente') { %>
                 <li><a href="/admin/ajouter_image_en_slade">AJOUTER IMAGE SLIDE</a></li>
                 <li><a href="/utilisateur/voir_image_en_slade">VOIR IMAGE SLIDE</a></li>

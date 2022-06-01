@@ -7,8 +7,9 @@ const BASE_CHOIX_TAILLE = require("../../Models/choix_taille");
 const BASE_AJOUT_INFO = require("../../Models/ajouter_info");
 const BASE_EVENEMENT = require("../../Models/ajouter_eve");
 const IMAGE_SLIDE = require('../../Models/image_en_slade');
+const BASE_CHOIX_TOGE = require('../../Models/choix_toge')
 const bcrypt = require("bcrypt");
-const cloudinary = require('../../helper/uploadImage')
+const cloudinary = require('../../helper/uploadImage');
 // ************GET*********************
 
 module.exports.getAccueil = async (req, res) => {
@@ -101,10 +102,15 @@ module.exports.getVoir_image_en_slade = async (req, res) => {
   };
   res.render("utilisateurs/image_slide", indexOption);
 };
-module.exports.getEvenement = (req, res) => {
+module.exports.getEvenement_polos = (req, res) => {
   const UTILISATEUR_CONNECTE = req.user;
-  const indexOption = { titre_page: "Evènement", UTILISATEUR_CONNECTE };
-  res.render("utilisateurs/evenement", indexOption);
+  const indexOption = { titre_page: "Choix des polos", UTILISATEUR_CONNECTE };
+  res.render("utilisateurs/taille_polo", indexOption);
+};
+module.exports.getEvenement_toges = (req, res) => {
+  const UTILISATEUR_CONNECTE = req.user;
+  const indexOption = { titre_page: "Choix des toges", UTILISATEUR_CONNECTE };
+  res.render("utilisateurs/taille_toge", indexOption);
 };
 module.exports.getContact = async (req, res) => {
   const UTILISATEUR_CONNECTE = req.user;
@@ -133,7 +139,7 @@ module.exports.getHistorique_payement = async (req, res) => {
   res.render("utilisateurs/historique_payement", indexOption);
 };
 // ***********POST***********************
-module.exports.postEvenement = (req, res) => {
+module.exports.postEvenement_polo = (req, res) => {
   const { choix_taille } = req.body;
   if(!choix_taille || choix_taille == '') return res.redirect('/evenement');
   const NEW_CHOIX = new BASE_CHOIX_TAILLE({
@@ -143,6 +149,25 @@ module.exports.postEvenement = (req, res) => {
   });
 
   NEW_CHOIX.save((e) => {
+    if (e) return console.log("ERREUR AU COURS DU CHOIX TAILLE");
+    console.log("CHOIX TAILLE A REUSSI");
+  });
+
+  res.send("Votre choix à bien été effectué.");
+};
+module.exports.postEvenement_toge = (req, res) => {
+  const { long_epaule, long_manche, long_robe } = req.body;
+  if(!long_epaule || long_epaule == '' || !long_manche || long_manche == '' 
+  || !long_robe || long_robe == '') return res.redirect('/evenement');
+  const NEW_CHOIX_TOGES = new BASE_CHOIX_TOGE({
+    nom: req.user.nom,
+    prenom: req.user.prenom,
+    long_epaule,
+    long_manche,
+    long_robe,
+  });
+
+  NEW_CHOIX_TOGES.save((e) => {
     if (e) return console.log("ERREUR AU COURS DU CHOIX TAILLE");
     console.log("CHOIX TAILLE A REUSSI");
   });

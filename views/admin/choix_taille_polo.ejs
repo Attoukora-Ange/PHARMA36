@@ -1,6 +1,6 @@
 <%- include ('../includes/header') %>
 <div class="inscription historique_payement">
-  <div class="titre_formulaire">tailles des vetements</div>
+  <div class="titre_formulaire">TAILLE DES POLOS DE TOUTE LA PHARMA36</div>
   <div class="tableau_historique">
       <table>
           <thead>
@@ -15,10 +15,10 @@
                 <% TOUS_CHOIX.forEach(CHAQUE_CHOIX => { %>
                     <tr>
                         <td><%= CHAQUE_CHOIX.date_choix %></td>
-                        <td><%= CHAQUE_CHOIX.nom %> <%= CHAQUE_CHOIX.nom %></td>
+                        <td><%= CHAQUE_CHOIX.nom %> <%= CHAQUE_CHOIX.prenom %></td>
                         <td><%= CHAQUE_CHOIX.choix %></td>
                         <td>
-                          <form action="/admin/supprimer_choix" method="post">
+                          <form action="/admin/supprimer_choix_polos" method="post">
                               <input type="hidden" name="id" value="<%=CHAQUE_CHOIX._id %>">
                               <button>Supprimer</button>
                           </form>

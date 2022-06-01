@@ -3,6 +3,7 @@ const BASE_AJOUT_INFO = require("../../Models/ajouter_info");
 const BASE_MEMBRE_BUREAU = require("../../Models/ajouter_bureau");
 const BASE_CHOIX_TAILLE = require("../../Models/choix_taille");
 const BASE_IMAGE_SLIDE = require('../../Models/image_en_slade');
+const BASE_CHOIX_TOGE = require('../../Models/choix_toge');
 const cloudinary = require('../../helper/uploadImage');
 // ******************************************
 
@@ -72,16 +73,27 @@ const MODIFIER_BUREAU = await BASE_MEMBRE_BUREAU.findOne(id);
   };
   res.render("admin/modifier_bureau", indexOption);
 };
-module.exports.getVoir_choix = async (req, res) => {
+module.exports.getVoir_choix_polos = async (req, res) => {
   const UTILISATEUR_CONNECTE = req.user;
   const TOUS_CHOIX = await BASE_CHOIX_TAILLE.find();
 
   const indexOption = {
-    titre_page: "Voir choix",
+    titre_page: "Voir choix de polos",
     UTILISATEUR_CONNECTE,
     TOUS_CHOIX,
   };
-  res.render("admin/choix_taille", indexOption);
+  res.render("admin/choix_taille_polo", indexOption);
+};
+module.exports.getVoir_choix_toges = async (req, res) => {
+  const UTILISATEUR_CONNECTE = req.user;
+  const TOUS_CHOIX_TOGES = await BASE_CHOIX_TOGE.find();
+
+  const indexOption = {
+    titre_page: "Voir choix des toges",
+    UTILISATEUR_CONNECTE,
+    TOUS_CHOIX_TOGES,
+  };
+  res.render("admin/choix_taille_toge", indexOption);
 };
 
 // *************POST*************
@@ -200,12 +212,19 @@ module.exports.postSupprimer_eve = async (req, res) => {
 
   res.redirect("/");
 };
-module.exports.postSupprimer_choix = async (req, res) => {
+module.exports.postSupprimer_choix_polos = async (req, res) => {
   const { id } = req.body;
   console.log(id);
   await BASE_CHOIX_TAILLE.findByIdAndDelete(id);
 
-  res.redirect("/admin/voir_choix");
+  res.redirect("/admin/voir_choix_polos");
+};
+module.exports.postSupprimer_choix_toges = async (req, res) => {
+  const { id } = req.body;
+  console.log(id);
+  await BASE_CHOIX_TOGE.findByIdAndDelete(id);
+
+  res.redirect("/admin/voir_choix_toges");
 };
 module.exports.postSupprimer_info = async (req, res) => {
   const { id } = req.body;

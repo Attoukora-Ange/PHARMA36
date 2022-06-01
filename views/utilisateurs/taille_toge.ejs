@@ -1,0 +1,24 @@
+<%- include ('../includes/header') %> 
+<div class="inscription connexion">
+    <div class="titre_formulaire">Mesure des toges</div>
+    <form action="/utilisateur/evenement/toges" method="post">
+        <div class="confidentialite">
+        <div>
+            <label for="epaule">Longueur épaule</label>
+            <input id="epaule" type="number" placeholder="Entrer la longueur de l'épaule" name="long_epaule">
+        </div>
+        <div>
+            <label for="manche">Longueur manche</label>
+            <input id="manche" type="number" placeholder="Entrer la longueur de la manche" name="long_manche">
+        </div>
+        <div>
+            <label for="robe">Longeur robe</label>
+            <input id="robe" type="number" placeholder="Entrer la longueur de la robe" name="long_robe">
+        </div>
+        </div>
+       
+        <button>Envoyer</button>
+    </form>
+</div>
+
+<%- include ('../includes/footer') %> 

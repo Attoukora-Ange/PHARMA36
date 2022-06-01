@@ -17,7 +17,9 @@ ROUTE.get('/ajouter_bureau', ExterneFonction.loggedIn, controllerAdmin.getAjoute
 ROUTE.get('/modifier_eve/:id', ExterneFonction.loggedIn, controllerAdmin.getModifier_eve);
 ROUTE.get('/modifier_info/:id', ExterneFonction.loggedIn, controllerAdmin.getModifier_info);
 ROUTE.get('/modifier_bureau/:id', ExterneFonction.loggedIn, controllerAdmin.getModifier_bureau);
-ROUTE.get('/voir_choix', ExterneFonction.loggedIn, controllerAdmin.getVoir_choix);
+// ROUTE.get('/voir_choix', ExterneFonction.loggedIn, controllerAdmin.getVoir_choix);
+ROUTE.get('/voir_choix_toges', ExterneFonction.loggedIn, controllerAdmin.getVoir_choix_toges);
+ROUTE.get('/voir_choix_polos', ExterneFonction.loggedIn, controllerAdmin.getVoir_choix_polos);
 
 // *************POST**********************
 ROUTE.post('/ajouter_eve', upload.single('photo_evenement'), controllerAdmin.postAjouter_eve);
@@ -28,7 +30,8 @@ ROUTE.post('/modifier_info/:id', controllerAdmin.postModifier_info);
 ROUTE.post('/modifier_eve/:id', upload.single('photo_evenement'), controllerAdmin.postModifier_eve);
 ROUTE.post('/modifier_bureau/:id', upload.single('bureau_photo'), controllerAdmin.postModifier_bureau);
 ROUTE.post('/supprimer_eve', controllerAdmin.postSupprimer_eve);
-ROUTE.post('/supprimer_choix', controllerAdmin.postSupprimer_choix);
+ROUTE.post('/supprimer_choix_polos', controllerAdmin.postSupprimer_choix_polos);
+ROUTE.post('/supprimer_choix_toge', controllerAdmin.postSupprimer_choix_toges);
 ROUTE.post('/supprimer_info', controllerAdmin.postSupprimer_info);
 ROUTE.post('/supprimer_membre_bureau', controllerAdmin.postSupprimer_membre_bureau);
 
