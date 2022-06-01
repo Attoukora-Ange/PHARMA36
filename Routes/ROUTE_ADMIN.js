@@ -34,6 +34,7 @@ ROUTE.post('/supprimer_choix_polos', controllerAdmin.postSupprimer_choix_polos);
 ROUTE.post('/supprimer_choix_toge', controllerAdmin.postSupprimer_choix_toges);
 ROUTE.post('/supprimer_info', controllerAdmin.postSupprimer_info);
 ROUTE.post('/supprimer_membre_bureau', controllerAdmin.postSupprimer_membre_bureau);
+ROUTE.post('/supprimer_utilisateur', controllerAdmin.postSupprimer_utilisateur);
 
 
 

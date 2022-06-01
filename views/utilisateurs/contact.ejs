@@ -11,9 +11,18 @@
                     <img src="<%= CONTACT.photo_profil %>" alt="<%= CONTACT.photo_profil %>">
                 </div>
                 <div class="evenement_date">+225 <%= CONTACT.telephone %></div>
+                <div class="evenement_date"><%= CONTACT.status_promotion %></div>
                 <div class="evenement_description">Dr <%= CONTACT.nom %> <%= CONTACT.prenom %></div>
                 <div class="button_photo contact_un">
-                    <button class="modifier"><a href="/contact/contact_detail/<%= CONTACT._id %>" target="">Voir +</a></button>
+                    <button class="modifier"><a href="/contact/contact_detail/<%= CONTACT._id %>">Voir +</a></button>
+                    <% if (UTILISATEUR_CONNECTE.status_promotion == 'Présidente') { %>
+
+                        <form action="/admin/supprimer_utilisateur" method="post">
+                            <input type="hidden" value="<%= CONTACT._id %>" name="id">
+                            <button class="modifier" style="margin-top: .5rem; color: var(--blanc) ;" id="supprimer">Supprimer</button>
+                          </form>
+                     
+                    <% } %>
                 </div>
             </div>
                     <% }) %>

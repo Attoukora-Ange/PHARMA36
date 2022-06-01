@@ -4,6 +4,7 @@ const BASE_MEMBRE_BUREAU = require("../../Models/ajouter_bureau");
 const BASE_CHOIX_TAILLE = require("../../Models/choix_taille");
 const BASE_IMAGE_SLIDE = require('../../Models/image_en_slade');
 const BASE_CHOIX_TOGE = require('../../Models/choix_toge');
+const BASE_UTILISATEUR = require('../../Models/inscription');
 const cloudinary = require('../../helper/uploadImage');
 // ******************************************
 
@@ -237,5 +238,11 @@ module.exports.postSupprimer_membre_bureau = async (req, res) => {
   await BASE_MEMBRE_BUREAU.findByIdAndDelete(id);
 
   res.redirect("/");
+};
+module.exports.postSupprimer_utilisateur = async (req, res) => {
+  const { id } = req.body;
+  await BASE_UTILISATEUR.findByIdAndDelete(id);
+
+  res.redirect("/contact");
 };
 
