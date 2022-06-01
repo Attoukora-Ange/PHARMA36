@@ -466,11 +466,11 @@ footer .bas .developpe{
 } 
 
 /* ***********HAUTEUR*************** */
-@media screen and (max-height: 700px) {
+/* @media screen and (max-height: 700px) {
    .carrouselle{
        display: none;
    }
-} 
+}  */
 /* @media screen and (max-height: 500px) {
    .carrouselle{
        display: none;
