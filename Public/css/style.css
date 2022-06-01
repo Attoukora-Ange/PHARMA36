@@ -149,6 +149,7 @@ main .carrouselle .image_carousselle .image_carousselle_slide.visible{
 }
 .evenement .evenement_info .photo .evenement_photo{
     padding: 1rem 0;
+    /* width: 100%; */
 }
 .evenement .evenement_info .photo .evenement_photo .photo_evenement{
     display: flex;
@@ -452,6 +453,10 @@ footer .bas .developpe{
     .contenu_info, .evenement_detail_info {
         width: 90%;
         font-size: 2rem;
+    }
+    .evenement .evenement_info .photo .evenement_photo {
+        /* padding: 1rem 0; */
+        width: 100%;
     }
     .evenement .evenement_info .photo .evenement_photo .photo_evenement {
         /* width: 100%; */
