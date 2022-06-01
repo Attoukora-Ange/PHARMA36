@@ -54,7 +54,6 @@ module.exports.getModifier_eve = async (req, res) => {
   const UTILISATEUR_CONNECTE = req.user;
   const id = req.params.id;
   const MODIFIER_EVENEMENT = await BASE_AJOUT_EVE.findById(id)
-console.log(MODIFIER_EVENEMENT)
   const indexOption = {
     titre_page: "Modifier évènement",
     UTILISATEUR_CONNECTE,
@@ -64,8 +63,9 @@ console.log(MODIFIER_EVENEMENT)
 };
 module.exports.getModifier_bureau = async(req, res) => {
   const UTILISATEUR_CONNECTE = req.user;
-  const {id} = req.params.id;
-const MODIFIER_BUREAU = await BASE_MEMBRE_BUREAU.findOne(id);
+  const {id} = req.params;
+const MODIFIER_BUREAU = await BASE_MEMBRE_BUREAU.findById(id);
+console.log(MODIFIER_BUREAU)
   const indexOption = {
     titre_page: "Modifier membre du bureau",
     UTILISATEUR_CONNECTE,
