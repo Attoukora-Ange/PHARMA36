@@ -66,6 +66,18 @@ module.exports.getModifier_soutenance = async (req, res) => {
   };
   res.render("utilisateurs/modifier_soutenance", indexOption);
 };
+module.exports.getModifier_profil_photo = async (req, res) => {
+  const id = req.user;
+  const UTILISATEUR_CONNECTE = req.user;
+  const MODIFIER_PROFIL = await DATA_BASE_INSCRIPTION.findById(id);
+
+  const indexOption = {
+    titre_page: "Utilisateur",
+    UTILISATEUR_CONNECTE,
+    MODIFIER_PROFIL,
+  };
+  res.render("utilisateurs/modifier_profil_photo", indexOption);
+};
 module.exports.getModifier_profil = async (req, res) => {
   const id = req.user;
   const UTILISATEUR_CONNECTE = req.user;
@@ -266,9 +278,41 @@ module.exports.postModifier_soutenance = async (req, res) => {
   await DATA_BASE_INSCRIPTION.findByIdAndUpdate(id, AJOUT);
   res.redirect("/");
 };
+module.exports.postModifier_profil_photo = async (req, res) => {
+  const id = req.user;
+  const ID_password = id.password;
+  let {
+    conf_password,
+  } = req.body;
+
+  if (!req.file) {
+    return res.send(
+      "Assurez-vous que tous les champs ont bien été remplis y compris la photo de profil ou changer de photo de profil"
+    );
+  }
+
+  if (
+    !conf_password
+  ) {
+    return res.send("Assurez-vous que le champs mot de passe à bien été remplis");
+  }
+  // const hashPass = await bcrypt.genSalt(10);
+  const pass_verifie = await bcrypt.compare(conf_password, ID_password);
+  if (!pass_verifie) {
+    return res.send("Désolé, vous n'avez pas entré le bon mot de passe.");
+  }
+  const photo_profil = await cloudinary.uploader.upload(req.file.path);
+  const AJOUT = {
+    photo_profil: photo_profil.secure_url,
+  };
+  await DATA_BASE_INSCRIPTION.findByIdAndUpdate(id, AJOUT);
+  res.send("Modification efectuée");
+};
 module.exports.postModifier_profil = async (req, res) => {
   const id = req.user;
   const ID_password = id.password;
+  console.log('===========')
+  console.log(ID_password)
   let {
     nom,
     prenom,
@@ -284,12 +328,14 @@ module.exports.postModifier_profil = async (req, res) => {
     password,
     conf_password,
   } = req.body;
+  console.log(req.body)
+  console.log(nom, prenom)
 
-  if (!req.file) {
-    return res.send(
-      "Assurez-vous que tous les champs ont bien été remplis y compris la photo de profil ou changer de photo de profil"
-    );
-  }
+  // if (!req.file) {
+  //   return res.send(
+  //     "Assurez-vous que tous les champs ont bien été remplis y compris la photo de profil ou changer de photo de profil"
+  //   );
+  // }
 
   if (
     !nom ||
@@ -313,9 +359,9 @@ module.exports.postModifier_profil = async (req, res) => {
 
   password = await bcrypt.hash(password, hashPass);
  
-  const photo_profil = await cloudinary.uploader.upload(req.file.path);
+  // const photo_profil = await cloudinary.uploader.upload(req.file.path);
   const AJOUT = {
-    photo_profil: photo_profil.secure_url,
+    // photo_profil: photo_profil.secure_url,
     nom,
     prenom,
     date_naissance,

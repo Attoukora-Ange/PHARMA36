@@ -18,10 +18,10 @@ ROUTE.get('/qui_sommes_nous', controllerUtilisateurs.getQui_sommes_nous);
 ROUTE.get('/utilisateur/connexion', controllerUtilisateurs.getConnexion);
 ROUTE.get('/utilisateur/inscription', controllerUtilisateurs.getInscription);
 ROUTE.get('/utilisateur/modifier_profil', ExterneFonction.loggedIn, controllerUtilisateurs.getModifier_profil);
+ROUTE.get('/utilisateur/modifier_profil_photo', ExterneFonction.loggedIn, controllerUtilisateurs.getModifier_profil_photo);
 ROUTE.get('/utilisateur/soutenance', ExterneFonction.loggedIn, controllerUtilisateurs.getSoutenance);
 ROUTE.get('/utilisateur/modifier_soutenance', ExterneFonction.loggedIn, controllerUtilisateurs.getModifier_soutenance);
 ROUTE.get('/contact/contact_detail/:id', ExterneFonction.loggedIn, controllerUtilisateurs.getContact_detail);
-// ROUTE.get('/evenement', ExterneFonction.loggedIn, controllerUtilisateurs.getEvenement);
 ROUTE.get('/utilisateur/evenement/polos', ExterneFonction.loggedIn, controllerUtilisateurs.getEvenement_polos);
 ROUTE.get('/utilisateur/evenement/toges', ExterneFonction.loggedIn, controllerUtilisateurs.getEvenement_toges);
 ROUTE.get('/contact', ExterneFonction.loggedIn, controllerUtilisateurs.getContact);
@@ -30,13 +30,13 @@ ROUTE.get('/cotisation', ExterneFonction.loggedIn, controllerUtilisateurs.getCot
 ROUTE.get('/historique_payement', ExterneFonction.loggedIn, controllerUtilisateurs.getHistorique_payement);
 
 // *****************POST***************
-// ROUTE.post('/evenement', controllerUtilisateurs.postEvenement);
 ROUTE.post('/utilisateur/evenement/polos', controllerUtilisateurs.postEvenement_polo);
 ROUTE.post('/utilisateur/evenement/toges', controllerUtilisateurs.postEvenement_toge);
 ROUTE.post('/cotisation', controllerUtilisateurs.postCotisation);
 ROUTE.post('/utilisateur/connexion', controllerUtilisateurs.postConnexion);
 ROUTE.post('/inscription', upload.single('fichier_photo_profil'), controllerUtilisateurs.postInscription);
-ROUTE.post('/utilisateur/modifier_profil', upload.single('fichier_photo_profil'), controllerUtilisateurs.postModifier_profil);
+ROUTE.post('/utilisateur/modifier_profil', controllerUtilisateurs.postModifier_profil);
+ROUTE.post('/utilisateur/modifier_profil_photo', upload.single('fichier_photo_profil'), controllerUtilisateurs.postModifier_profil_photo);
 ROUTE.post('/utilisateur/modifier_soutenance', upload_PDF.single('fichier_these_pdf'), controllerUtilisateurs.postModifier_soutenance);
 ROUTE.post('/utilisateur/soutenance', upload_PDF.single('fichier_these_pdf'), controllerUtilisateurs.postSoutenance);
 

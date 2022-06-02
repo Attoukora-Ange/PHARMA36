@@ -1,9 +1,9 @@
 <%- include ('../includes/header') %> 
 <div class="evenement">
     <div class="evenement_info">
-        <div class="evenement_contenue">DETAIL SUR UN MEMBRE</div>
         <% if (UTILISATEUR_CONNECTE) { %>
             <% if (CONTACT_DETAIL) { %>
+            <div class="evenement_contenue">DETAIL SUR <%= CONTACT_DETAIL.nom %> <%= CONTACT_DETAIL.prenom %></div>
             <div class="detail_sur_membre">
            <div class="photo_contact">
                 <img src="<%= CONTACT_DETAIL.photo_profil %>" alt="<%= CONTACT_DETAIL.photo_profil %>">
@@ -12,20 +12,29 @@
                 <div class="detail_nom">Dr <%= CONTACT_DETAIL.nom %> <%= CONTACT_DETAIL.prenom %></div>
                 <% if (UTILISATEUR_CONNECTE.status_promotion == 'Présidente') { %>
                     <div class="detail_tel"><%= CONTACT_DETAIL.date_naissance %></div>
+                    <div class="detail_tel">Domicile : <%= CONTACT_DETAIL.domicile %></div>
+                    <div class="detail_tel">Contact parent : <%= CONTACT_DETAIL.contact_parent %></div>
                 <% }else{%>
                     <div class="detail_tel"><%= CONTACT_DETAIL.date_naissance ? CONTACT_DETAIL.date_naissance.split('-')[2] + '/' + CONTACT_DETAIL.date_naissance.split('-')[1]: ''%></div>
-                <%} %>
-                <div class="detail_tel">+225 <%= CONTACT_DETAIL.telephone %></div>
+                    <%} %>
+                    <div class="detail_tel">+225 <%= CONTACT_DETAIL.telephone %></div>
                 <div class="detail_email"><a href="mailto:<%= CONTACT_DETAIL.email%>"><%= CONTACT_DETAIL.email%></a></div>
                 <div class="detail_adresse">Adresse : <%= CONTACT_DETAIL.domicile %></div>
+                <div class="detail_adresse">Mon nom sur <%= CONTACT_DETAIL.reseau_social %> est <%= CONTACT_DETAIL.identifiant_reseau %></div>
                 <div class="detail_lieu_exercice">Adresse du travail : <%= CONTACT_DETAIL.lieu_exercice %></div>
-                <div class="detail_titre">Titre sujet de thèse : <%= CONTACT_DETAIL.titre_sujet %></div>
+            </div>
+        </div>
+            <div class="detail_sur_membre">
+            <div class="contenue">
+                <div class="detail_nom">RESUME DE LA THESE</div>
+                <div class="detail_titre"><span style="font-weight: 700; font-size: 1.2rem; text-transform: uppercase;">Titre de la thèse</span> : <%= CONTACT_DETAIL.titre_sujet %></div>
                 <div class="detail_departement">Département: <%= CONTACT_DETAIL.departement%></div>
                 <div class="detail_encadreur">Encadreur : Pr. <%= CONTACT_DETAIL.directeur%></div>
                 <% if (CONTACT_DETAIL.fichier_pdf != 'aucune') { %>
                     <div class="detail_fichier_telechager"><a href="<%= CONTACT_DETAIL.fichier_pdf %>" target="_blank">Télecharger la thèse</a></div>
                 <%} %>
                 <div class="detail_date_soutenance">Date soutenance : <%= CONTACT_DETAIL.date_soutenance %></div>
+                <div class="detail_date_soutenance"><%= CONTACT_DETAIL.resume %></div>
             </div>
         </div>
          

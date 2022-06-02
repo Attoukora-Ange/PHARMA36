@@ -2,13 +2,8 @@
 <div class="inscription">
   <% if (MODIFIER_PROFIL) { %>
     <div class="titre_formulaire">Modifier votre profil</div>
-  <form id="form" action="/utilisateur/modifier_profil" method="post" enctype="multipart/form-data">
+  <form id="form" action="/utilisateur/modifier_profil" method="post">
     <div class="info_personnelle">
-      <div class="champ_profil">
-        <label for="photo_profile"></label>
-        <input id="photo_profile" type="file" accept=".jpg, .jpeg, .png" name="fichier_photo_profil" value="<%= MODIFIER_PROFIL.photo_profil %>">
-      </div>
-      <input  type="text" readonly id="champs_vide" style="background-color: inherit; opacity: 0;; text-align: center; width:20%; margin-top: 1.5rem; height: 1.5rem;" value="<%= MODIFIER_PROFIL.photo_profil %>">
       <div class="info">INFORMATION PERSONNELLE</div>
       <div class="description">civilité</div>
       <div class="civilite">
@@ -104,6 +99,6 @@
   <% } %>
  
 </div>
-<script src="/js/inser_photo.js"></script>
+<!-- <script src="/js/inser_photo.js"></script> -->
 <script src="/js/modifier_profil.js"></script>
 <%- include ('../includes/footer') %>

@@ -37,6 +37,7 @@
           <div class="sous_menu">
             <ul>
               <% if (UTILISATEUR_CONNECTE) { %>
+              <li><a href="/utilisateur/modifier_profil_photo">MODIFIER PHOTO DE PROFIL</a></li>
               <li><a href="/utilisateur/modifier_profil">MODIFIER PROFIL</a></li>
                 <% if (UTILISATEUR_CONNECTE.soutenue == true) { %>
                   <li><a href="/utilisateur/modifier_soutenance">MODIFIER INFORMATION DE SOUTENANCE</a></li>
