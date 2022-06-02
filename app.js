@@ -7,6 +7,7 @@ const methodeOveride = require('method-override');
 const session = require('express-session');
 const passport = require('passport');
 const flash = require('express-flash');
+const cors = require('cors')
 
 const ROUTE_ADMIN = require('./Routes/ROUTE_ADMIN');
 const ROUTE_UTILISATEUR = require('./Routes/ROUTE_UTILISATEUR');
@@ -17,6 +18,7 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
+app.use(cors());
 app.use(morgan('tiny'));
 app.use(methodeOveride('_method'));
 app.use(express.static(path.join(__dirname + '/Public')));
@@ -30,6 +32,11 @@ app.use(session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized:true,
+    cookie: {
+        maxAge: 30 * 60 * 1000, 
+        sameSite: "lax",
+        httpOnly: true,
+      },
 }))
 app.use(passport.initialize());
 app.use(passport.session());
