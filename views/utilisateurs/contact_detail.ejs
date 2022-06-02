@@ -3,7 +3,7 @@
     <div class="evenement_info">
         <% if (UTILISATEUR_CONNECTE) { %>
             <% if (CONTACT_DETAIL) { %>
-            <div class="evenement_contenue">DETAIL SUR <%= CONTACT_DETAIL.nom %> <%= CONTACT_DETAIL.prenom %></div>
+            <div class="evenement_contenue" style="text-transform: uppercase;">DETAIL SUR <%= CONTACT_DETAIL.nom %> <%= CONTACT_DETAIL.prenom %></div>
             <div class="detail_sur_membre">
            <div class="photo_contact">
                 <img src="<%= CONTACT_DETAIL.photo_profil %>" alt="<%= CONTACT_DETAIL.photo_profil %>">

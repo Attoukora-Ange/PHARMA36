@@ -301,7 +301,7 @@ module.exports.postModifier_profil_photo = async (req, res) => {
   if (!pass_verifie) {
     return res.send("Désolé, vous n'avez pas entré le bon mot de passe.");
   }
-  const photo_profil = await cloudinary.uploader.upload(req.file.path);
+  const photo_profil = await (await cloudinary.uploader.upload(req.file.path));
   const AJOUT = {
     photo_profil: photo_profil.secure_url,
   };
